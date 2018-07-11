@@ -2,8 +2,8 @@
 const http = require('http');
 http.createServer(function(request, response)
 {
-	response.writeHead(200, {'Content-Type': 'text/plain'});
-	response.end('Discord bot is active now \n');
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.end('Discord bot is active now \n');
 }).listen(3000);
 
 // Discord bot implements
@@ -13,7 +13,8 @@ const event = {
     ready : require('./src/ready.js'),
     message : require('./src/message.js')
 };
-require('dotenv').config();
+// enable to local development
+//require('dotenv').config();
 util = require('./src/util.js');
 
 client.on('ready', () =>
@@ -23,12 +24,12 @@ client.on('ready', () =>
           
 client.on('message', message =>
 {
-	event.message(client, message);
+    event.message(client, message);
 });
 
 if(process.env.DISCORD_BOT_TOKEN == undefined)
 {
-	console.log('please set ENV: DISCORD_BOT_TOKEN');
-	process.exit(0);
+    console.log('please set ENV: DISCORD_BOT_TOKEN');
+    process.exit(0);
 }
 client.login( process.env.DISCORD_BOT_TOKEN );
