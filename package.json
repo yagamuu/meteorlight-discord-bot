@@ -1,0 +1,16 @@
+{
+  "name": "meteorlight-discord-bot",
+  "version": "0.0.0",
+  "description": "Discord bot of my GranblueFantasy Team",
+  "main": "main.js",
+  "dependencies": {
+    "discord.js": "latest"
+  },
+  "devDependencies": {
+    "dotenv" : "latest"
+  },
+  "scripts": {
+    "start": "node main.js",
+    "test": "node main.js"
+  }
+}
