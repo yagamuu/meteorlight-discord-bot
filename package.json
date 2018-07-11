@@ -1,12 +1,14 @@
 {
-  "name": "glitch-discord-bot",
+  "name": "meteorlight-discord-bot",
   "version": "0.0.0",
-  "description": "discord bot sample on Glitch",
+  "description": "Discord bot of my GranblueFantasy Team",
   "main": "main.js",
   "dependencies": {
     "discord.js": "latest"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "dotenv" : "latest"
+  },
   "scripts": {
     "start": "node main.js",
     "test": "node main.js"
