@@ -1,12 +1,15 @@
 module.exports = function (client) {
+    let beforeAnnouncementTime = null;
     // announcement AT time
     const announcement_hours = setInterval (() => {
         const time = util.getTime();
-        if (time.getHours() == 21) {
-            client.channels.get(util.channel['talk']).send('AT開始であります' + util.emoji(client, 'silfa'));
+        if (util.checkTimeHour(time, 21, beforeAnnouncementTime)) {
+            client.channels.get(util.channel['talk']).send('【時報】AT開始であります' + util.emoji(client, 'silfa'));
+            beforeAnnouncementTime = 21;
         }
-        else if (time.getHours() == 23) {
-            client.channels.get(util.channel['talk']).send('AT終了であります' + util.emoji(client, 'dead'));
+        else if (util.checkTimeHour(time, 23, beforeAnnouncementTime)) {
+            client.channels.get(util.channel['talk']).send('【時報】AT終了であります' + util.emoji(client, 'dead'));
+            beforeAnnouncementTime = 23;
         }
-    }, 1 * 1000 * 60 * 60);
+    }, 1 * 1000);
 };
