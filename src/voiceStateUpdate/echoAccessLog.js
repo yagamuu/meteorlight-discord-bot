@@ -9,8 +9,8 @@ module.exports = function (client, oldMember, newMember) {
         );
     }
     else {
-        if (newMember.voiceChannel.parentID == util.parentId.admin) return;
         if (!oldMember.voiceChannel) {
+            if (newMember.voiceChannel.parentID == util.parentId.admin) return;
             client.channels.get(util.channel['log']).send(
                 '【VC】' +
                 newMember.displayName  + 'さんが' + 
@@ -27,13 +27,25 @@ module.exports = function (client, oldMember, newMember) {
                     'に入出しました。'
                 );
             }
-            client.channels.get(util.channel['log']).send(
-                '【VC】' +
-                newMember.displayName + 'さんが' + 
-                oldMember.voiceChannel.name + 'から' + 
-                newMember.voiceChannel.name + 
-                'に移動しました。'
-            );
+            else {
+                if (newMember.voiceChannel.parentID == util.parentId.admin) {
+                    client.channels.get(util.channel['log']).send(
+                        '【VC】' +
+                        oldMember.displayName  + 'さんが' + 
+                        oldMember.voiceChannel.name + 
+                        'から退出しました。'
+                    );
+                }
+                else {
+                    client.channels.get(util.channel['log']).send(
+                        '【VC】' +
+                        newMember.displayName + 'さんが' + 
+                        oldMember.voiceChannel.name + 'から' + 
+                        newMember.voiceChannel.name + 
+                        'に移動しました。'
+                    );
+                }
+            }
         }
     }
 };
