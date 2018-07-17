@@ -19,6 +19,7 @@ module.exports = function (client, oldMember, newMember) {
             );
         }
         else {
+            if (oldMember.voiceChannel.parentID == util.parentId.admin) return;
             client.channels.get(util.channel['log']).send(
                 '【VC】' +
                 newMember.displayName + 'さんが' + 
