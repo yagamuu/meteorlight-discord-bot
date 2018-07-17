@@ -19,7 +19,14 @@ module.exports = function (client, oldMember, newMember) {
             );
         }
         else {
-            if (oldMember.voiceChannel.parentID == util.parentId.admin) return;
+            if (oldMember.voiceChannel.parentID == util.parentId.admin) {
+                client.channels.get(util.channel['log']).send(
+                    '【VC】' +
+                    newMember.displayName  + 'さんが' + 
+                    newMember.voiceChannel.name + 
+                    'に入出しました。'
+                );
+            }
             client.channels.get(util.channel['log']).send(
                 '【VC】' +
                 newMember.displayName + 'さんが' + 
