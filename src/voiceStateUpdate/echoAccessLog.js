@@ -1,6 +1,6 @@
 module.exports = function (client, oldMember, newMember) {
     if (!newMember.voiceChannel) {
-        console.log(oldMember.voiceChannel.parentID);
+        console.log(oldMember.voiceChannel);
         if (oldMember.voiceChannel.parentID == util.parentId.admin) return;
         client.channels.get(util.channel['log']).send(
             '【VC】' +
@@ -10,7 +10,7 @@ module.exports = function (client, oldMember, newMember) {
         );
     }
     else {
-        console.log(newMember.voiceChannel.parentID);
+        console.log(newMember.voiceChannel);
         if (newMember.voiceChannel.parentID == util.parentId.admin) return;
         if (!oldMember.voiceChannel) {
             client.channels.get(util.channel['log']).send(
