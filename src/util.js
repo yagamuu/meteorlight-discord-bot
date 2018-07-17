@@ -5,7 +5,21 @@ module.exports.emoji = function (client, name) {
 
 // channel list alias
 module.exports.channel = {
-    talk : '448126984925741066'
+    log : '463745366643310592',
+    talk : '448126984925741066',
+}
+
+// VC channel list alias
+module.exports.vcChannel = {
+    talk : '399951453848076304',
+    admin : '462664164410916874',
+}
+
+// parent Id list alias
+module.exports.parentId = {
+    multi : '462654684293890049',
+    movie : '414461950911840256',
+    admin : '462663522661302282',
 }
 
 module.exports.getTime = () => {

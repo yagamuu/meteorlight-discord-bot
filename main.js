@@ -11,7 +11,8 @@ const discord = require('discord.js');
 client = new discord.Client();
 const event = {
     ready : require('./src/ready.js'),
-    message : require('./src/message.js')
+    message : require('./src/message.js'),
+    voiceStateUpdate : require('./src/voiceStateUpdate.js'),
 };
 // enable to local development
 //require('dotenv').config();
@@ -21,10 +22,15 @@ client.on('ready', () =>
 {
     event.ready(client);
 });
-          
+
 client.on('message', message =>
 {
     event.message(client, message);
+});
+
+client.on('voiceStateUpdate', (oldMember, newMember) =>
+{
+    event.voiceStateUpdate(client, oldMember, newMember);
 });
 
 if(process.env.DISCORD_BOT_TOKEN == undefined)
