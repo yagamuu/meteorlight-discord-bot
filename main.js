@@ -8,7 +8,7 @@ http.createServer(function(request, response)
 
 // Discord bot implements
 const discord = require('discord.js');
-client = new discord.Client();
+let client = new discord.Client();
 const event = {
     ready : require('./src/ready.js'),
     message : require('./src/message.js'),
@@ -16,7 +16,6 @@ const event = {
 };
 // enable to local development
 //require('dotenv').config();
-util = require('./src/util.js');
 
 client.on('ready', () =>
 {

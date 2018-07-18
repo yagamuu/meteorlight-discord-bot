@@ -1,3 +1,5 @@
+const moment = require("moment-timezone");
+
 // emoji list
 module.exports.emoji = function (client, name) {
     return client.emojis.find("name", name);
@@ -16,17 +18,21 @@ module.exports.vcChannel = {
 }
 
 // parent Id list alias
-module.exports.parentId = {
+const parentId = {
     multi : '462654684293890049',
     movie : '414461950911840256',
     admin : '462663522661302282',
-}
+};
+module.exports.parentId = parentId;
+
+module.exports.isAdmin = member => {
+    return member.voiceChannel && member.voiceChannel.parentID == parentId.admin;
+};
 
 module.exports.getTime = () => {
-    const timeZoneOffset = -9;
-    return new Date(Date.now() - (timeZoneOffset * 60 - new Date().getTimezoneOffset()) * 60000);
+    return moment().locale('ja').tz('Asia/Tokyo');
 };
 
 module.exports.checkTimeHour = (date, time, beforeTime) => {
-    return date.getHours() == time && beforeTime != time && date.getMinutes() == 0;
+    return date.hour() == time && beforeTime != time && date.minute() == 0;
 };

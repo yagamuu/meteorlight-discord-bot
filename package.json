@@ -4,7 +4,8 @@
   "description": "Discord bot of my GranblueFantasy Team",
   "main": "main.js",
   "dependencies": {
-    "discord.js": "latest"
+    "discord.js": "latest",
+    "moment-timezone" : "latest"
   },
   "devDependencies": {
     "dotenv" : "latest"

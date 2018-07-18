@@ -1,3 +1,5 @@
+const util = require('../util.js');
+
 module.exports = function (client) {
     let beforeAnnouncementTime = null;
     // announcement AT time
