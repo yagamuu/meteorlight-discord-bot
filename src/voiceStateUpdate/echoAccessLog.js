@@ -33,7 +33,7 @@ const echoJoinLog = function (client, member) {
 };
 
 const echoLeaveLog = function (client, member) {
-    const text = member.displayName  + 'さんが' + member.voiceChannel.name + 'から退出しました。';
+    const text = member.displayName  + 'さんが' + member.voiceChannel.name + 'から退室しました。';
     echoLog(client, text);
 };
 
