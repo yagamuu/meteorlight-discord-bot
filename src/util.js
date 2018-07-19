@@ -25,6 +25,14 @@ module.exports.parentId = {
     admin : process.env.PARENT_ADMIN,
 };
 
+module.exports.sound = {
+    '?カトル1VC' : 'feower_1.wav',
+    '?カトル2VC' : 'feower_2.wav',
+    '?カトル4VC' : 'feower_4.wav',
+};
+
+module.exports.resourceDir = process.env.RESOURCE_DIR;
+
 module.exports.isAdmin = member => {
     return member.voiceChannel && member.voiceChannel.parentID == process.env.PARENT_ADMIN;
 };

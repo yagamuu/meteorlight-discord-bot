@@ -5,10 +5,12 @@
   "main": "main.js",
   "dependencies": {
     "discord.js": "latest",
-    "moment-timezone" : "latest"
+    "moment-timezone": "^0.5.21",
+    "node-opus": "^0.3.0",
+    "opusscript": "0.0.6"
   },
   "devDependencies": {
-    "dotenv" : "latest"
+    "dotenv": "latest"
   },
   "scripts": {
     "start": "node main.js",
