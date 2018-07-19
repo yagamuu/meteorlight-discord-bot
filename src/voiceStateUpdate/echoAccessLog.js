@@ -1,5 +1,6 @@
 const util = require('../util.js');
 module.exports = function (client, oldMember, newMember) {
+    if (oldMember.user.bot || newMember.user.bot) return;
     if (util.isAdmin(oldMember) || util.isAdmin(newMember)) {
         echoAccessLogAdmin(client, oldMember, newMember);
     }
@@ -10,7 +11,7 @@ module.exports = function (client, oldMember, newMember) {
     }
 }
 
-const echoAccessLogAdmin = function (client, oldMember, newMember) {
+const echoAccessLogAdmin = (client, oldMember, newMember) => {
     if (!oldMember.voiceChannel || !newMember.voiceChannel) return;
     if (util.isAdmin(oldMember) && util.isAdmin(newMember)) return;
 
@@ -18,26 +19,23 @@ const echoAccessLogAdmin = function (client, oldMember, newMember) {
     else echoLeaveLog(client, oldMember);
 };
 
-const echoLog = function (client, text) {
+const echoLog = (client, content) => {
     const time = util.getTime();
-    client.channels.get(util.channel['log']).send(
-        '【VC】' +
-        text + 
-        time.format('【MM/DD - hh:mm:ss】')
-    );
+    const message = `【VC】${content}${time.format('【MM/DD - HH:mm:ss】')}`;
+    client.channels.get(util.channel['log']).send(message);
 };
 
-const echoJoinLog = function (client, member) {
-    const text = member.displayName  + 'さんが' + member.voiceChannel.name + 'に入室しました。';
-    echoLog(client, text);
+const echoJoinLog = (client, member) => {
+    const content = `${member.displayName}さんが${member.voiceChannel.name}に入室しました。`;
+    echoLog(client, content);
 };
 
-const echoLeaveLog = function (client, member) {
-    const text = member.displayName  + 'さんが' + member.voiceChannel.name + 'から退室しました。';
-    echoLog(client, text);
+const echoLeaveLog = (client, member) => {
+    const content = `${member.displayName}さんが${member.voiceChannel.name}から退室しました。`;
+    echoLog(client, content);
 };
 
-const echoMoveLog = function (client, oldMember, newmember) {
-    const text = newmember.displayName  + 'さんが' + oldMember.voiceChannel.name + 'から' + newmember.voiceChannel.name + 'に移動しました。';
-    echoLog(client, text);
+const echoMoveLog = (client, oldMember, newmember) => {
+    const content = `${newmember.displayName}さんが${oldMember.voiceChannel.name}から${newmember.voiceChannel.name}に移動しました。`
+    echoLog(client, content);
 };

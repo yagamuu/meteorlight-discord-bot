@@ -1,4 +1,5 @@
 const moment = require("moment-timezone");
+require('dotenv').config();
 
 // emoji list
 module.exports.emoji = function (client, name) {
@@ -7,32 +8,27 @@ module.exports.emoji = function (client, name) {
 
 // channel list alias
 module.exports.channel = {
-    log : '463745366643310592',
-    talk : '448126984925741066',
+    log : process.env.TEXT_CHANNEL_LOG,
+    talk : process.env.TEXT_CHANNEL_TALK,
 }
 
 // VC channel list alias
 module.exports.vcChannel = {
-    talk : '399951453848076304',
-    admin : '462664164410916874',
+    talk : process.env.VOICE_CHANNEL_TALK,
+    admin : process.env.VOICE_CHANNEL_ADMIN,
 }
 
 // parent Id list alias
-const parentId = {
-    multi : '462654684293890049',
-    movie : '414461950911840256',
-    admin : '462663522661302282',
+module.exports.parentId = {
+    multi : process.env.PARENT_MULTI,
+    movie : process.env.PARENT_MOVIE,
+    admin : process.env.PARENT_ADMIN,
 };
-module.exports.parentId = parentId;
 
 module.exports.isAdmin = member => {
-    return member.voiceChannel && member.voiceChannel.parentID == parentId.admin;
+    return member.voiceChannel && member.voiceChannel.parentID == process.env.PARENT_ADMIN;
 };
 
 module.exports.getTime = () => {
     return moment().locale('ja').tz('Asia/Tokyo');
-};
-
-module.exports.checkTimeHour = (date, time, beforeTime) => {
-    return date.hour() == time && beforeTime != time && date.minute() == 0;
 };
