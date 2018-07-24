@@ -10,7 +10,7 @@ module.exports = function(message) {
             });
         })
         .catch(console.log);
-        //message.delete();
+        message.delete();
         return;
     }
     return;
