@@ -10,6 +10,7 @@ module.exports.emoji = function (client, name) {
 module.exports.channel = {
     log : process.env.TEXT_CHANNEL_LOG,
     talk : process.env.TEXT_CHANNEL_TALK,
+    vc : process.env.TEXT_CHANNEL_VC,
 }
 
 // VC channel list alias
