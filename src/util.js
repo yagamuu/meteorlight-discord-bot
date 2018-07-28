@@ -26,11 +26,7 @@ module.exports.parentId = {
     admin : process.env.PARENT_ADMIN,
 };
 
-module.exports.sound = {
-    '?カトル1VC' : 'feower_1.wav',
-    '?カトル2VC' : 'feower_2.wav',
-    '?カトル4VC' : 'feower_4.wav',
-};
+module.exports.sound = require('../sound.json');
 
 module.exports.resourceDir = process.env.RESOURCE_DIR;
 
